@@ -3,24 +3,19 @@
     $username = 'gwof063yrr7icqb7';
     $password = 's5wnc12xrptqdc5h';
     
-
-    // Heroku connection
-    /* 
-    $dsn = 'mysql:host=AVeryLongURLprovidedforJawsDBhost;dbname=YourJawsDBdbname';
-    $username = 'Your JawsDB username';
-    $password = 'Your JawsDB password'; */
-    
     try {
-        //local development server connection
-        //if using a $password, add it as 3rd parameter
+        //establish connection to database
         $db = new PDO($dsn, $username, $password);
-
-        // Heroku connection
-        //$db = new PDO($dsn, $username, $password);
-    } catch (PDOException $e) {
+        // echo "You are connected to the database.";
+    } //incase of error
+        catch (PDOException $e) {
         $error = "Database Error: ";
         $error .= $e->getMessage();
-        include('../view/error.php');
+        include('.view/error.php');
         exit();
     }
-?>
+    
+    
+    
+        
+    ?>
