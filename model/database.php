@@ -1,14 +1,15 @@
 <?php
-//$dsn = 'mysql:host=g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=hj1uw7504aalaap8';
-//$username = 'l1um6e8judhzu9xh';
-//$password= 'ez5fostyl2bkquz2';
+//$dsn = 'mysql:host=d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=c1tnb8hgmd4wamri';
+//$username = 'inesmq7s1c0vzgbz';
+//$password= 'b07drpndjah5jczn';
 
-$dsn = 'mysql:host=localhost;dbname=zippyusedautos';
-$username = 'root';
+//for local use
+//$dsn = 'mysql:host=localhost;dbname=zippyusedautos';
+//$username = 'root';
 
 try {
-    //establish connection to database
-    $db = new PDO($dsn, $username, // $password
+    //establish connection to database, remember to // out password if local
+    $db = new PDO($dsn, $username, $password
     );
     // echo "You are connected to the database.";
 } //incase of error
