@@ -1,7 +1,7 @@
 <?php
-//$dsn = 'mysql:host=d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=c1tnb8hgmd4wamri';
-//$username = 'inesmq7s1c0vzgbz';
-//$password= 'b07drpndjah5jczn';
+$dsn = 'mysql:host=d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=c1tnb8hgmd4wamri';
+$username = 'inesmq7s1c0vzgbz';
+$password= 'b07drpndjah5jczn';
 
 //for local use
 //$dsn = 'mysql:host=localhost;dbname=zippyusedautos';
@@ -16,7 +16,7 @@ try {
     catch (PDOException $e) {
     $error = "Database Error: ";
     $error .= $e->getMessage();
-    include('.view/error.php');
+    include('error.php');
     exit();
 }
 
