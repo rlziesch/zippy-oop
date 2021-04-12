@@ -21,6 +21,18 @@
     <?php if ($action !== 'list_classes') { ?>
     <p><a href=".?action=list_classes">View/Edit Vehicle Classes</a></p>
     <?php } ?>
+
+    <?php
+    // New link for register -- note to self, is the controller file already included here?
+   // if (!$username) { ?>
+
+    <p><a href=".?action=show_register">Register New Admin User</a></p>
+    
+
+    <?php //} ?>
+
+
+
 </div>
 
 <footer>

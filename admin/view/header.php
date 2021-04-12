@@ -1,3 +1,13 @@
+<?php
+
+  include('./util/valid_admin.php');
+
+  if (isset($_SESSION['is_valid_admin'])) { ?>
+   <br> <p>Welcome <a href=".?action=logout">(Logout Admin)</a></p>
+<?php } 
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,3 +23,5 @@
         <header>
             <h1>Zippy Admin</h1>
         </header>
+
+        

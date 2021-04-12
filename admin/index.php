@@ -1,10 +1,15 @@
 <?php
+    $lifetime = 60 * 60 * 24 * 14;
+    session_set_cookie_params($lifetime, '/');
+    session_start();
+
     // Model
     require('../model/database.php');
     require('../model/vehicle_db.php');
     require('../model/type_db.php');
     require('../model/class_db.php');
     require('../model/make_db.php');
+    require('../model/admin_db.php');
 
     // Get required data from Model
     $makes = get_makes();
@@ -37,6 +42,13 @@
     $model = filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING);
     $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
 
+    // New POST parameters from login
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $confirm_password = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_STRING);
+
+   
+
     $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
     if (!$action) {
         $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -62,3 +74,12 @@
         $action === 'add_vehicle' ||
         $action === 'delete_vehicle' ||
         $action === 'list_vehicles') include('controllers/vehicles.php');
+
+    //routes new actions to admin subcontroller 
+
+    if ($action === 'login' || 
+        $action === 'show_login' || 
+        $action === 'register' || 
+        $action === 'show_register' || 
+        $action === 'logout')
+        include('controllers/admin.php');
