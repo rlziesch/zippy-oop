@@ -17,7 +17,7 @@
             break;
 
         case 'login':
-            if (is_valid_admin_login($username, $password)) {
+            if (AdminDB::is_valid_admin_login($username, $password)) {
                 $_SESSION['is_valid_admin'] = true;
                 header("Location: .?action=list_vehicles");
             } else {
@@ -29,15 +29,18 @@
         
         case 'register':
             include('./util/valid_register.php');
-            $errors = valid_registration($username, $password, $confirm_password);
-            if ($errors) {
-                include('./view/register.php');
-        
-            } else {
-                add_admin($username, $password);
-                $_SESSION['is_valid_admin'] = true;
-                header("Location: .?action=list_vehicles");
-            }   
+                if (AdminDB::username_exists($username)) {
+                    array_push($errors, "The username you entered is already taken.");
+                }
+            $errors = ValidRegister::valid_registration($username, $password, $confirm_password);
+                if ($errors) {
+                    include('./view/register.php');
+            
+                } else {
+                    AdminDB::add_admin($username, $password);
+                    $_SESSION['is_valid_admin'] = true;
+                    header("Location: .?action=list_vehicles");
+                }   
             break;   
 
     }

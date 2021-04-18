@@ -7,7 +7,7 @@
         case 'delete_make':
             if ($make_id) {
                 try {
-                    delete_make($make_id);
+                    MakeDB::delete_make($make_id);
                 } catch (PDOException $e) {
                     $error = "You cannot delete a make if vehicles are assigned to the make ID.";
                     include('view/error.php');
